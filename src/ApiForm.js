@@ -10,12 +10,16 @@ class ApiForm extends Component {
             api:  e.target.value})    
     }
 
-    handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault()
         const api = e.target.querySelector('input').value
         fetch(api)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            this.setState({
+                api: ""}) 
+        })
     }
 
     render() {
